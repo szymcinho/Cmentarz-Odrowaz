@@ -1,0 +1,8 @@
+Informuje wszystkie wyszukiwarki, że mogą indeksować całą stronę.
+
+User-agent: *
+Allow: /
+
+Wskazuje wyszukiwarkom, gdzie znajduje się mapa Twojej strony.
+
+Sitemap: https://www.google.com/search?q=https://parafiaodrowaz-cmentarz.pl/sitemap.xml
