@@ -9,7 +9,7 @@
 const CONFIG = {
 	// Adres URL do publicznego pliku CSV z danymi z Arkusza Google
 	googleSheetUrl:
-		'https://docs.google.com/spreadsheets/d/e/2PACX-1vR4uPrH2HlEG9Yfeo-XA5RG1GOnAQ3JEFZIgS4abTir_2XIy2SxqDwGSK4hCX7W9GAH2kgEHLE-s9G4/pub?output=csv',
+		'https://docs.google.com/spreadsheets/d/e/2PACX-1vTzfNZiYgXRxO8XjvNHoX2vYnKz7IWFmFKEedDdyXv3BeCd1uq0wLdOJ8Z68WCnK04wJ8yRkJRvXDEm/pub?output=csv',
 	// Adres URL do formularza kontaktowego z serwisu Formspree
 	formspreeUrl: 'https://formspree.io/f/xnnbkljy',
 	// Współrzędne początkowe i poziom zoomu dla mapy
@@ -212,14 +212,15 @@ function showInfoPanel(key) {
 		)
 		.join('')
 
+	// ZMIANA: Zmieniono breakpointy z 'md:' na 'lg:'
 	panel.innerHTML = `
     <div class="p-4 md:p-6 border-b border-stone-200 bg-stone-50/50">
-        <div class="flex flex-col md:flex-row md:justify-center md:items-start gap-4">
-            <div class="flex flex-row gap-4 w-full md:w-auto">
-                <img src="${tomb.photos[0]}" alt="Zdjęcie grobu" class="gallery-img w-1/2 md:w-[300px] h-auto rounded-lg cursor-pointer hover:opacity-80 transition object-contain">
-                <img src="${tomb.photos[1]}" alt="Zdjęcie tablicy" class="gallery-img w-1/2 md:w-[300px] h-auto rounded-lg cursor-pointer hover:opacity-80 transition object-contain">
+        <div class="flex flex-col lg:flex-row lg:justify-center lg:items-start gap-4">
+            <div class="flex flex-row gap-4 w-full lg:w-auto">
+                <img src="${tomb.photos[0]}" alt="Zdjęcie grobu" class="gallery-img w-1/2 lg:w-[300px] h-auto rounded-lg cursor-pointer hover:opacity-80 transition object-contain">
+                <img src="${tomb.photos[1]}" alt="Zdjęcie tablicy" class="gallery-img w-1/2 lg:w-[300px] h-auto rounded-lg cursor-pointer hover:opacity-80 transition object-contain">
             </div>
-            <div class="flex-grow md:pl-5 md:max-w-md">
+            <div class="flex-grow lg:pl-5 lg:max-w-md">
                 ${personsHTML}
                 <div class="location mt-4 pt-4 border-t border-stone-200">
                     <h4 class="font-semibold text-stone-600 mb-2">Lokalizacja</h4>
@@ -249,7 +250,7 @@ function applyFilter() {
 	const filterText = document.getElementById('filter-name').value.toLowerCase().trim()
 	if (!filterText) return
 
-	// ZMIANA: Podziel zapytanie na słowa
+	// Podziel zapytanie na słowa
 	const searchWords = filterText.split(' ').filter(Boolean) // Usuwa puste frazy (np. po podwójnej spacji)
 
 	const flatMatches = []
@@ -257,7 +258,7 @@ function applyFilter() {
 		tomb.persons.forEach(person => {
 			const personNameLower = person.name.toLowerCase()
 
-			// ZMIANA: Sprawdź, czy KAŻDE słowo z zapytania znajduje się w imieniu i nazwisku
+			// Sprawdź, czy KAŻDE słowo z zapytania znajduje się w imieniu i nazwisku
 			const isMatch = searchWords.every(word => personNameLower.includes(word))
 
 			if (isMatch) {
